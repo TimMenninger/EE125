@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 -------------------------------------------------------------------------------
 entity two_digit_timer is
 	generic (
-		fclk: natural := 50); -- In MHz
+		fclk: natural := 5); -- In MHz
 	port (
 		ena: in std_logic; -- Enable must be high for timer to run
 		clk: in std_logic; -- Uses clock at fclk to time
@@ -17,8 +17,8 @@ end entity;
 architecture timer of two_digit_timer is
 		signal count2: integer range 0 to 6; -- Tens digit value
 		signal count1: integer range 0 to 9; -- Ones digit value
-		signal ticks_MHz: integer; -- Increments ticks and resets at 1 mil
-		signal Mticks: integer; -- Counts once every 1 000 000 ticks
+		signal ticks_MHz: integer range 0 to 1_000_000; -- Increments ticks
+		signal Mticks: integer range 0 to fclk; -- Counts 1 every 1000000 ticks
 begin
 	process (ena, clk, rst)
 	begin
@@ -62,9 +62,6 @@ begin
 			end if;
 		-- Otherwise, nothing to update
 		end if;
-		
-		-- If count1 is 10, we missed the boundary case.
-		assert (count1 /= 10);
 		
 		-- Convert the count to segment display codes.
 		case count2 is
