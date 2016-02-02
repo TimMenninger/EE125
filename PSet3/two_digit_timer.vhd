@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 -------------------------------------------------------------------------------
 entity two_digit_timer is
 	generic (
-		fclk: natural := 5); -- In MHz
+		fclk: natural := 50); -- In MHz
 	port (
 		ena: in std_logic; -- Enable must be high for timer to run
 		clk: in std_logic; -- Uses clock at fclk to time
