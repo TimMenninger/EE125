@@ -33,7 +33,7 @@ begin
 			"0001000" when 10, -- "A" on ssd
 			"1100000" when 11, -- "b" on ssd
 			"0110001" when 12, -- "C" on ssd
-		   	"1000010" when 13, -- "d" on ssd
+		   "1000010" when 13, -- "d" on ssd
 			"0110000" when 14, -- "E" on ssd
 			"0111000" when 15; -- "f" on ssd
 end architecture;
